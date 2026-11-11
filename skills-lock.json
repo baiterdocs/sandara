@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "skills": {
+    "a11y-debugging": {
+      "source": "ChromeDevTools/chrome-devtools-mcp",
+      "sourceType": "github",
+      "skillPath": "skills/a11y-debugging/SKILL.md",
+      "computedHash": "6171db1f81edc051f5759c49f4b41c3f80fc1b5cc0ed281bcaf0eb07735c4c4a"
+    },
+    "color-contrast": {
+      "source": "mgifford/accessibility-skills",
+      "sourceType": "github",
+      "skillPath": "skills/color-contrast/SKILL.md",
+      "computedHash": "7e9eb3e05fdece432d679ce398f962a06cb772dbc2c460c949e4d471b69b3bfb"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "7bc223e2aafbdbf6e50ea243ba6ef67fe432bb069ab439fea0390795dac0bf7f"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "86e265bf3df79c65215f7244d71892ca278370d56dec47a8cc15e8373db3f714"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "4f68ae07187fb0d1fb78c88b503d089da4cf5a9d9625d1f2e425b1590bf96d92"
+    },
+    "wix-docs": {
+      "source": "wix/skills",
+      "sourceType": "github",
+      "skillPath": "skills/wix-docs/SKILL.md",
+      "computedHash": "a1c9df0d598897668a70057d7a682263f23f728c488eaf51d7741d8cc9b913c4"
+    }
+  }
+}

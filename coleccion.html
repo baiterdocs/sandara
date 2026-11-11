@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Colección · Sandara</title>
+<meta name="description" content="Aretes, dijes, anillos, cadenas y pulseras de plata 950, plata 925 y acero hipoalergénico.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sim/styles.css"><link rel="stylesheet" href="sim/site.css">
+</head>
+<body data-page="coleccion">
+<div data-site="header"></div>
+
+<main>
+  <header class="col-hd wrap">
+    <h1 id="titulo">Colección</h1>
+    <p>Piezas de autor en plata 950, plata 925 y acero hipoalergénico. Toca una pieza para verla de cerca o cómprala directo.</p>
+  </header>
+
+  <div class="toolbar">
+    <div class="wrap">
+      <div class="chips2" role="group" aria-label="Filtrar por tipo" id="chips"></div>
+      <label class="sort">Ordenar
+        <select id="orden">
+          <option value="nuevo">Novedades</option>
+          <option value="asc">Precio: menor a mayor</option>
+          <option value="desc">Precio: mayor a menor</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <section class="wrap" style="padding-bottom:96px">
+    <p class="count" id="cuenta" aria-live="polite"></p>
+    <ul class="grid" id="lista"></ul>
+  </section>
+</main>
+
+<div data-site="footer"></div>
+<script src="sim/site.js"></script>
+<script>
+const FILTROS = [['todo', 'Todo'], ['nuevo', 'Novedades'], ['aretes', 'Aretes'], ['dije', 'Dijes'], ['anillo', 'Anillos'], ['cadena', 'Cadenas y pulseras']];
+const TITULOS = { todo: 'Colección', nuevo: 'Novedades', aretes: 'Aretes', dije: 'Dijes', anillo: 'Anillos', cadena: 'Cadenas y pulseras' };
+const coincide = (p, f) => f === 'todo' || (f === 'nuevo' ? p.badge === 'Nuevo' : f === 'cadena' ? ['cadena', 'pulsera'].includes(p.cat) : p.cat === f);
+let filtro = new URLSearchParams(location.search).get('c') || 'todo';
+if (!TITULOS[filtro]) filtro = 'todo';
+
+Sandara.catalogo().then((cat) => {
+  const chips = document.getElementById('chips'), lista = document.getElementById('lista'), orden = document.getElementById('orden');
+  chips.innerHTML = FILTROS.map(([k, t]) => `<button type="button" data-f="${k}" aria-pressed="${k === filtro}">${t}<small>${cat.filter((p) => coincide(p, k)).length}</small></button>`).join('');
+
+  function pintar() {
+    let items = cat.filter((p) => coincide(p, filtro));
+    if (orden.value === 'asc') items = [...items].sort((a, b) => a.precio - b.precio);
+    if (orden.value === 'desc') items = [...items].sort((a, b) => b.precio - a.precio);
+    items = [...items.filter((p) => !p.agotado), ...items.filter((p) => p.agotado)]; // agotados al final
+    lista.innerHTML = items.map(Sandara.card).join('');
+    document.getElementById('cuenta').textContent = `${items.length} ${items.length === 1 ? 'pieza' : 'piezas'}`;
+    document.getElementById('titulo').textContent = TITULOS[filtro];
+    document.title = `${TITULOS[filtro]} · Sandara`;
+  }
+  chips.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-f]'); if (!b) return;
+    filtro = b.dataset.f;
+    chips.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    history.replaceState(null, '', filtro === 'todo' ? 'coleccion.html' : `coleccion.html?c=${filtro}`);
+    pintar();
+  });
+  orden.addEventListener('change', pintar);
+  Sandara.bindNotify(lista);
+  pintar();
+});
+</script>
+</body>
+</html>

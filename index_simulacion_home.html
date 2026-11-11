@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sandara Simulación</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#000;--ch:#2F2E2E;--gr:#605E5E;--pa:#fff;--mi:#F6F6F6;--ok:#2E6B4F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E8E6;font:400 15px/1.45 'Josefin Sans',Arial,sans-serif;color:var(--ch);padding:24px 16px}
+h1,h2,h3,.cz{font-family:Cinzel,serif;font-weight:400;letter-spacing:.04em}
+.wrap{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.col{width:390px;max-width:100%}
+.lbl{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gr);margin:0 0 10px 4px}
+.phone{background:var(--pa);border:1px solid #cfcdca;overflow:hidden}
+.bar{background:var(--ch);color:#fff;font-size:11px;letter-spacing:.14em;text-align:center;padding:7px 8px;text-transform:uppercase}
+.bar b{font-weight:600}
+.hd{background:#000;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;height:56px}
+.hd .logo{font:700 20px Cinzel,serif;letter-spacing:.06em}
+.hd span{font-size:12px;letter-spacing:.12em}
+.nav{display:flex;gap:18px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid #e6e6e6;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.hero{position:relative;height:420px;background:#ddd center/cover}
+.hero .t{position:absolute;inset:auto 0 0 0;padding:22px 18px;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff}
+.hero h1{font-size:30px;line-height:1.1}
+.hero p{font-size:14px;margin:6px 0 14px}
+.btn{display:block;width:100%;text-align:center;background:var(--ch);color:#fff;border:0;padding:14px;font:600 13px 'Josefin Sans';letter-spacing:.16em;text-transform:uppercase}
+.btn.w{background:#fff;color:var(--ch)}
+.btn.o{background:#fff;color:var(--ch);border:1px solid var(--ch)}
+.btn.wa{background:#1F7A4D}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #e6e6e6}
+.trust div{padding:12px 4px;border-right:1px solid #eee}.trust div:last-child{border:0}
+.trust i{display:block;font-style:normal;font-size:16px;margin-bottom:3px}
+.sec{padding:22px 16px}
+.sec h2{font-size:20px;text-align:center;margin-bottom:4px}
+.sub{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gr);text-align:center;margin-bottom:14px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.cats img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--mi)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--mi);display:block}
+.card .n{font:700 13px Cinzel,serif;margin-top:8px}
+.card .p{font-size:13px;color:var(--gr)}
+.card .rt{font-size:11px;color:var(--ch)}
+.badge{position:absolute;top:8px;left:8px;background:#fff;font-size:10px;letter-spacing:.12em;padding:3px 6px;text-transform:uppercase}
+.rel{position:relative}
+.rev{background:var(--mi);padding:18px 16px;text-align:center}
+.rev q{font:400 15px/1.4 Cinzel,serif;display:block;margin-bottom:6px}
+.ugc{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.ugc img{width:100%;aspect-ratio:1;object-fit:cover}
+.ft{background:#000;color:#bbb;padding:18px 16px;font-size:12px}
+.note{font-size:11.5px;color:var(--gr);background:#FFF8E5;border-left:3px solid #C9A227;padding:8px 10px;margin:10px 16px}
+.sticky{position:sticky;bottom:0;background:#fff;border-top:1px solid #e6e6e6;padding:10px 16px;display:flex;gap:8px}
+.sticky .btn{flex:1}
+.pb{height:4px;background:#e4e4e4;margin-top:6px}.pb>div{height:100%;background:#C9A227}
+/* checkout */
+.steps{display:flex;justify-content:space-between;padding:12px 16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #e6e6e6}
+.steps b{color:var(--ch)}.steps span{color:#aaa}
+.f{padding:14px 16px}
+.f label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:12px 0 5px}
+.in{border:1px solid #cfcfcf;height:44px;padding:0 12px;display:flex;align-items:center;font-size:14px;color:#888}
+.in.ok{border-color:var(--ok);color:var(--ch)}.in.bad{border-color:#B3261E;color:var(--ch)}
+.em{font-size:11.5px;color:#B3261E;margin-top:4px}.okm{font-size:11.5px;color:var(--ok);margin-top:4px}
+.pay{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px}
+.pay div{border:1px solid #cfcfcf;text-align:center;padding:10px 2px;font-size:11px;letter-spacing:.08em}
+.pay .on{border:2px solid var(--ch)}
+.sum{background:var(--mi);padding:14px 16px;font-size:13px}
+.sum div{display:flex;justify-content:space-between;margin:3px 0}
+.sum .tot{font:700 16px 'Josefin Sans';border-top:1px solid #ddd;padding-top:8px;margin-top:8px}
+.li{display:flex;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid #eee;font-size:13px}
+.li img{width:56px;height:56px;object-fit:cover;background:var(--mi)}
+.modal{border:1px solid #cfcdca;background:#fff;padding:22px 18px;text-align:center;margin-top:18px}
+.modal h3{font-size:20px;margin-bottom:6px}
+.modal p{font-size:13px;color:var(--gr);margin-bottom:12px}
+.chk{font-size:11.5px;text-align:left;margin:10px 0;display:flex;gap:6px}
+@media (prefers-color-scheme:dark){body{background:#1a1a1a}.lbl{color:#aaa}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ HOME ============ -->
+<div class="col">
+<p class="lbl">01 · Home optimizada (móvil)</p>
+<div class="phone">
+  <div class="bar">Envío gratis en Lima desde <b>S/ 300</b><div class="pb"><div style="width:0"></div></div></div>
+  <div class="hd"><span>☰</span><div class="logo">SANDARA</div><span>🔍 &nbsp;🛍 2</span></div>
+  <div class="nav"><span>Novedades</span><span>Aretes</span><span>Collares</span><span>Dijes</span><span>Anillos</span><span>Pulseras</span><span>Regalos</span></div>
+  <div class="hero" style="background-image:url(https://static.wixstatic.com/media/6720f3_99e29ccccefb4e68b652925da31b3c87~mv2.jpg/v1/fill/w_780,h_840,q_80/h.jpg)">
+    <div class="t"><h1>Joyería de autor<br>para el día a día</h1><p>Plata 950 e hipoalergénica · Hecha en Lima</p><a class="btn w">Ver novedades</a></div>
+  </div>
+  <div class="trust"><div><i>◇</i>Plata 950</div><div><i>✓</i>Hipoaler-<br>génico</div><div><i>⇄</i>Cambios<br>Consultar</div><div><i>✉</i>Entrega<br>Coordinada</div></div>
+  <div class="sec"><h2>Compra por pieza</h2><p class="sub">Encuentra la tuya</p>
+    <div class="cats">
+      <div><img src="https://static.wixstatic.com/media/6720f3_a7183d27ef634493864006f5ac6d5114~mv2.jpg/v1/fill/w_180,h_180,q_80/a.jpg" alt="">Aretes</div>
+      <div><img src="https://static.wixstatic.com/media/6720f3_46473b5aba154a1593b4f81f47bbb8f6~mv2.jpg/v1/fill/w_180,h_180,q_80/b.jpg" alt="">Collares</div>
+      <div><img src="https://static.wixstatic.com/media/6720f3_9e3abc8804934d4e8c7516528f569196~mv2.jpg/v1/fill/w_180,h_180,q_80/c.jpg" alt="">Dijes</div>
+      <div><img src="https://static.wixstatic.com/media/6720f3_b0b4be3b477342449ddf13caf962c470~mv2.jpg/v1/fill/w_180,h_180,q_80/d.jpg" alt="">Anillos</div>
+    </div></div>
+  <div class="sec" style="padding-top:0"><h2>Más vendidos</h2><p class="sub">Elegidos por nuestras clientas</p>
+    <div class="grid">
+      <div class="card rel"><span class="badge">Más vendido</span><img src="https://static.wixstatic.com/media/6720f3_51a37c6ab1ba43ddb4c08f6247b3316b~mv2.jpg/v1/fill/w_360,h_360,q_80/1.jpg" alt=""><p class="n">ARETES ANTONELLA</p><p class="p">S/ 155.00</p><p class="rt">Reseñas pendientes de verificar</p></div>
+      <div class="card rel"><span class="badge">Nuevo</span><img src="https://static.wixstatic.com/media/6720f3_c122f0c3c38646aa930a74cd8f10876a~mv2.jpg/v1/fill/w_360,h_360,q_80/2.jpg" alt=""><p class="n">ARGOLLAS GEMAS</p><p class="p">S/ 140.00</p><p class="rt">Reseñas pendientes de verificar</p></div>
+      <div class="card"><img src="https://static.wixstatic.com/media/6720f3_07aaa4b5049c4f098c1fbf0acde1a2a1~mv2.jpg/v1/fill/w_360,h_360,q_80/3.jpg" alt=""><p class="n">ARGOLLAS CLÁSICAS</p><p class="p">S/ 120.00</p></div>
+      <div class="card"><img src="https://static.wixstatic.com/media/6720f3_0035d83743ad40da9a613ddb08f7d625~mv2.jpg/v1/fill/w_360,h_360,q_80/4.jpg" alt=""><p class="n">ARGOLLAS CORAZÓN</p><p class="p">S/ 45.00</p></div>
+    </div>
+    <div style="margin-top:14px"><a class="btn o">Ver toda la colección</a></div></div>
+  <div class="rev"><q>Los aretes que llevé para el trabajo son los mejores, siempre los uso.</q><small>Mariana L. · Testimonio del sitio</small></div>
+  <div class="sec"><h2>@sandara.pe</h2><p class="sub">Así las llevan ellas</p>
+    <div class="ugc">
+      <img src="https://static.wixstatic.com/media/6720f3_86fbc58c19464d219dd022bb1553d5a1~mv2.jpg/v1/fill/w_240,h_240,q_80/u1.jpg" alt="">
+      <img src="https://static.wixstatic.com/media/6720f3_ae0dff2c141346c597de9121478d14c4~mv2.jpg/v1/fill/w_240,h_240,q_80/u2.jpg" alt="">
+      <img src="https://static.wixstatic.com/media/6720f3_6f9b01f014d84a71a85b67bc663a1da6~mv2.jpg/v1/fill/w_240,h_240,q_80/u3.jpg" alt="">
+    </div></div>
+  <div class="sec" style="background:var(--mi);text-align:center"><h2>Novedades antes que nadie</h2><p class="sub">Canal de WhatsApp</p><a class="btn">Unirme al canal</a></div>
+  <div class="ft">SANDARA · Joyería minimalista · Lima, Perú<br>Envíos · Cambios · Cuidado de la plata · Preguntas frecuentes</div>
+  <div class="sticky"><a class="btn wa">WhatsApp</a><a class="btn">Comprar</a></div>
+</div>
+<div class="modal">
+  <p class="lbl" style="margin:0 0 8px">Pop-up de salida (exit-intent)</p>
+  <h3>Tu primera joya, 10% menos</h3><p>Déjanos tu correo y recibe tu código al instante.</p>
+  <div class="in ok">nombre@gmail.com</div>
+  <div class="in bad" style="margin-top:8px">98765</div><div class="em" style="text-align:left">Celular de 9 dígitos que empiece en 9</div>
+  <div class="chk">☑ Acepto recibir novedades de Sandara.</div>
+  <a class="btn">Quiero mi 10%</a>
+</div>
+</div>
+
+<!-- ============ CHECKOUT ============ -->
+<div class="col">
+<p class="lbl">02 · Carrito + checkout optimizado</p>
+<div class="phone">
+  <div class="bar">Te faltan <b>S/ 180.00</b> para envío gratis<div class="pb"><div style="width:40%"></div></div></div>
+  <div class="hd"><span>←</span><div class="logo">SANDARA</div><span>🔒 Pago seguro</span></div>
+  <div class="steps"><b>1 Contacto</b><span>2 Envío</span><span>3 Pago</span></div>
+  <div class="li"><img src="https://static.wixstatic.com/media/6720f3_c122f0c3c38646aa930a74cd8f10876a~mv2.jpg/v1/fill/w_112,h_112,q_80/x.jpg" alt=""><div style="flex:1"><b class="cz">ARGOLLAS GEMAS</b><br>Plata 950 · Cant. 1</div>S/ 120.00</div>
+  <div class="li" style="background:var(--mi)"><img src="https://static.wixstatic.com/media/6720f3_b0b4be3b477342449ddf13caf962c470~mv2.jpg/v1/fill/w_112,h_112,q_80/y.jpg" alt=""><div style="flex:1"><b class="cz">DIJE PUNTO DE LUZ</b><br>Completa tu selección</div><a class="btn o" style="width:auto;padding:8px 10px">+ S/ 45</a></div>
+  <div class="f">
+    <a class="btn o" style="margin-bottom:6px">Continuar con Google</a>
+    <p style="text-align:center;font-size:11px;color:#999;margin:8px 0">o como invitada</p>
+    <label>Correo</label><div class="in ok">nombre@gmail.com</div><div class="okm">✓ Correcto</div>
+    <label>Celular (WhatsApp)</label><div class="in ok">987 654 321</div>
+    <label>Distrito (Lima)</label><div class="in ok">Miraflores ▾</div>
+    <label>Pago</label>
+    <div class="pay"><div class="on">Yape</div><div>Plin</div><div>Tarjeta</div><div>Transfer.</div></div>
+  </div>
+  <div class="sum"><div><span>Subtotal</span><span>S/ 120.00</span></div><div><span>Envío</span><span>S/ 10.00</span></div><div><span>Cupón BIENVENIDA10</span><span>− S/ 12.00</span></div><div class="tot"><span>Total</span><span>S/ 118.00</span></div></div>
+  <div class="f"><a class="btn">Pagar S/ 118.00</a><p style="font-size:11px;color:var(--gr);text-align:center;margin-top:8px">Plata 950 garantizada · Consulta condiciones de cambios · Empaque de regalo</p></div>
+</div>
+<div class="note">Montos, plazos de cambio, tiempos de envío, reseñas y métodos de pago son <b>de muestra</b>: reemplazar por las políticas reales antes de publicarlas.</div>
+</div>
+
+</div>
+</body>
+</html>

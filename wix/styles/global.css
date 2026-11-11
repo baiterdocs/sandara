@@ -1,0 +1,7 @@
+/* global.css (Wix: Page Code > global.css). Estados de campo de la hoja CompraExpress. Solo paleta de marca. */
+.sd-ok, .sd-bad { transition: border-color .2s cubic-bezier(.16, 1, .3, 1), background-color .2s cubic-bezier(.16, 1, .3, 1); }
+.sd-ok  { --border-color: #2F2E2E; }
+.sd-bad { --border-color: #2F2E2E; --border-width: 2px; --background-color: #F6F6F6; }
+.sd-bad input, .sd-ok input { border-color: #2F2E2E !important; }
+.sd-bad input { border-width: 2px !important; background-color: #F6F6F6 !important; }
+@media (prefers-reduced-motion: reduce) { .sd-ok, .sd-bad { transition: none; } }

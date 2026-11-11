@@ -1,0 +1,12 @@
+# entorno y dependencias
+work/venv/
+node_modules/
+.DS_Store
+
+# videos pesados (se guardan aparte)
+*.mp4
+*.mov
+
+# herramientas locales
+.firecrawl/
+.claude/settings.local.json

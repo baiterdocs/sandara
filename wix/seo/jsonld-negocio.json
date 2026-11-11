@@ -1,0 +1,34 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "JewelryStore",
+      "@id": "https://www.sandara.pe/#negocio",
+      "name": "Sandara",
+      "alternateName": "Sandara Joyería & Diseño",
+      "description": "Joyería de autor en plata 950, plata 925 y acero hipoalergénico con piedras naturales. Diseño minimalista hecho en Lima, Perú.",
+      "url": "https://www.sandara.pe/",
+      "logo": "https://static.wixstatic.com/media/6720f3_4004e05604414930aa8e0b69f9fcb33f~mv2.png",
+      "image": "https://static.wixstatic.com/media/6720f3_4004e05604414930aa8e0b69f9fcb33f~mv2.png",
+      "telephone": "+51949209933",
+      "priceRange": "S/ 40 - S/ 160",
+      "currenciesAccepted": "PEN",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "areaServed": { "@type": "Country", "name": "Perú" },
+      "sameAs": ["https://www.instagram.com/sandara.pe/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.sandara.pe/#web",
+      "url": "https://www.sandara.pe/",
+      "name": "Sandara",
+      "inLanguage": "es-PE",
+      "publisher": { "@id": "https://www.sandara.pe/#negocio" }
+    }
+  ]
+}

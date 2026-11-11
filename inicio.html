@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sandara · Joyería de autor en Lima</title>
+<meta name="description" content="Joyería minimalista en plata 950, plata 925 y acero hipoalergénico con piedras naturales. Diseño de autor hecho en Lima.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sim/styles.css"><link rel="stylesheet" href="sim/site.css">
+</head>
+<body data-page="inicio">
+<div data-site="header"></div>
+
+<main>
+  <section class="hero">
+    <div class="copy">
+      <h1>Joyería de autor para el día a día</h1>
+      <p>Plata 950, plata 925 y acero hipoalergénico con piedras naturales. Diseñada en Lima, pensada para no quitártela.</p>
+      <div class="ctas">
+        <a class="btn inline" href="coleccion.html">Ver colección</a>
+        <a class="btn-line" href="coleccion.html?c=nuevo">Novedades</a>
+      </div>
+    </div>
+    <figure><img src="sim/assets/hero.jpg" alt="Dije de plata con forma de corazón sobre el cuello de una mujer" width="889" height="981" fetchpriority="high"></figure>
+  </section>
+
+  <section class="promise" aria-label="Lo que te garantizamos">
+    <ul>
+      <li><svg class="ico"><use href="#i-gem"/></svg>Plata 950 y 925</li>
+      <li><svg class="ico"><use href="#i-leaf"/></svg>Acero hipoalergénico</li>
+      <li><svg class="ico"><use href="#i-gift"/></svg>Empaque Sandara</li>
+      <li><svg class="ico"><use href="#i-lock"/></svg>Compra en 3 toques</li>
+    </ul>
+  </section>
+
+  <section class="cats wrap" aria-labelledby="cats-t">
+    <div class="sec-head"><h2 class="h-sec" id="cats-t">Encuentra la tuya</h2></div>
+    <ul>
+      <li><a href="coleccion.html?c=aretes"><img src="sim/assets/cat/aretes-romelia-2.jpg" alt="" loading="lazy"><span>Aretes <small id="n-aretes"></small></span></a></li>
+      <li><a href="coleccion.html?c=dije"><img src="sim/assets/cat/dije-azalea-2.jpg" alt="" loading="lazy"><span>Dijes <small id="n-dije"></small></span></a></li>
+      <li><a href="coleccion.html?c=anillo"><img src="sim/assets/cat/anillo-sublime.jpg" alt="" loading="lazy"><span>Anillos <small id="n-anillo"></small></span></a></li>
+      <li><a href="coleccion.html?c=cadena"><img src="sim/assets/cat/senor-de-los-milagros-2.jpg" alt="" loading="lazy"><span>Cadenas y pulseras <small id="n-cadena"></small></span></a></li>
+    </ul>
+  </section>
+
+  <section class="news wrap" aria-labelledby="news-t">
+    <div class="sec-head"><h2 class="h-sec" id="news-t">Recién salidas del Atelier</h2><a href="coleccion.html?c=nuevo">Ver todas</a></div>
+    <ul class="grid" id="novedades"></ul>
+  </section>
+
+  <section class="atelier-band on-dark">
+    <figure><img src="sim/assets/atelier.jpg" alt="Dije de flor en plata sobre una blusa color marfil" loading="lazy"></figure>
+    <div class="copy">
+      <h2>El Atelier</h2>
+      <p>Cada pieza de nuestro Atelier es elaborada con especial cuidado, prestando atención a cada detalle y seleccionando materiales que reflejen nuestro compromiso con la calidad.</p>
+      <p>Una selección pensada para quienes valoran el diseño, la delicadeza y el cuidado detrás de cada joya.</p>
+      <a class="btn-line" href="atelier.html">Conoce el Atelier</a>
+    </div>
+  </section>
+
+  <section class="quote">
+    <blockquote>“Los aretes que llevé para el trabajo son los mejores, siempre los uso.”</blockquote>
+    <cite>Mariana L. · Lima</cite>
+  </section>
+
+  <section class="ig wrap" aria-labelledby="ig-t">
+    <div class="sec-head"><h2 class="h-sec" id="ig-t">Así las llevan ellas</h2><a href="https://www.instagram.com/sandara.pe/" rel="noopener">@sandara.pe</a></div>
+    <ul>
+      <li><img src="sim/assets/argollas-oreja.jpg" alt="Argolla dorada en la oreja" loading="lazy"></li>
+      <li><img src="sim/assets/cat/dije-trebol-2.jpg" alt="Dije Trébol puesto" loading="lazy"></li>
+      <li><img src="sim/assets/cat/aretes-antonella-2.jpg" alt="Aretes Antonella puestos" loading="lazy"></li>
+      <li><img src="sim/assets/cat/dije-punto-de-luz-2.jpg" alt="Dije Punto de Luz puesto" loading="lazy"></li>
+      <li><img src="sim/assets/cat/aretes-qantu-2.jpg" alt="Aretes Qantu puestos" loading="lazy"></li>
+      <li><img src="sim/assets/cat/dije-althea-2.jpg" alt="Dije Althea puesto" loading="lazy"></li>
+    </ul>
+  </section>
+
+  <section class="channel">
+    <h2 class="h-sec">Novedades antes que nadie</h2>
+    <p>Únete a nuestro canal de WhatsApp para enterarte primero de piezas nuevas y disponibilidad limitada.</p>
+    <a class="btn inline" href="https://chat.whatsapp.com/I9oaftRYK4t50vFaFzUdlF" rel="noopener" style="margin:0 auto">Unirme al canal</a>
+  </section>
+</main>
+
+<div data-site="footer"></div>
+<script src="sim/site.js"></script>
+<script>
+Sandara.catalogo().then((c) => {
+  const nuevos = c.filter((p) => p.badge === 'Nuevo' && !p.agotado).slice(0, 4);
+  document.getElementById('novedades').innerHTML = nuevos.map(Sandara.card).join('');
+  const n = (k) => c.filter((p) => k.includes(p.cat)).length;
+  [['aretes', ['aretes']], ['dije', ['dije']], ['anillo', ['anillo']], ['cadena', ['cadena', 'pulsera']]]
+    .forEach(([id, ks]) => { document.getElementById('n-' + id).textContent = n(ks); });
+});
+</script>
+</body>
+</html>
