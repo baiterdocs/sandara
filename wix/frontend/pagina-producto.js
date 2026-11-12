@@ -12,9 +12,14 @@ import { currentMember } from 'wix-members-frontend';
 const SITIO = 'https://www.sandara.pe';
 const WHATSAPP = '51949209933'; // verificado en instrucciones de pago de Wix
 
-const imgUrl = (m) => { const id = String(m || '').split('/')[3]; return id ? `https://static.wixstatic.com/media/${id}` : undefined; };
+const imgUrl = (m) => {
+  const src = String(m || '');
+  if (/^https:\/\//i.test(src)) return src;
+  const id = /^wix:image:\/\/v1\/([^/]+)/.exec(src)?.[1];
+  return id ? `https://static.wixstatic.com/media/${id}` : undefined;
+};
 const sinHtml = (h) => String(h || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
-let producto, opcionNombre;
+let producto;
 
 $w.onReady(async () => {
   producto = await $w('#productPage1').getProduct();
@@ -38,17 +43,8 @@ $w.onReady(async () => {
     },
   }]).catch(() => {});
 
-  // 2. Opción (talla/medida) sin salir de la página
-  const opts = Object.values(p.productOptions || {});
-  if (opts.length && $w('#ddOpcion').id) {
-    opcionNombre = opts[0].name;
-    $w('#ddOpcion').placeholder = `Elige ${opcionNombre.toLowerCase()}`;
-    $w('#ddOpcion').options = opts[0].choices
-      .filter((c) => c.visible !== false)
-      .map((c) => ({ label: c.inStock === false ? `${c.description} · agotado` : c.description, value: c.description }));
-    $w('#ddOpcion').onChange(() => $w('#txtErrCompra').collapse());
-    $w('#ddOpcion').expand();
-  } else if ($w('#ddOpcion').id) { $w('#ddOpcion').collapse(); }
+  // Usar los selectores nativos para conservar todas las opciones y sus combinaciones.
+  try { $w('#ddOpcion').collapse(); } catch (e) { /* El selector antiguo es opcional. */ }
 
   // 3. Comprar ahora
   $w('#txtErrCompra').collapse();
@@ -64,7 +60,7 @@ $w.onReady(async () => {
   // 4. Confianza + envío + WhatsApp
   $w('#txtConfianza').text = 'Yape y Plin · Empaque Sandara · Entrega coordinada por WhatsApp';
   const r = await resumenCarrito();
-  $w('#txtEnvioProd').text = r.envioGratis ? 'Tu pedido ya tiene envío gratis' : `Envío gratis en Lima desde S/ ${r.umbral}`;
+  $w('#txtEnvioProd').text = r.disponible && r.envioGratis ? 'Tu pedido ya tiene envío gratis' : `Envío gratis en Lima desde S/ ${r.umbral}`;
   $w('#btnWhatsApp').link = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola Sandara, me interesa: ${p.name} (${url})`)}`;
   $w('#btnWhatsApp').target = '_blank';
 });
@@ -76,18 +72,19 @@ function errorSuave(msg) {
 }
 
 async function comprarAhora(forzarHoja) {
-  const opciones = {};
-  if (opcionNombre) {
-    if (!$w('#ddOpcion').value) { errorSuave(`Elige tu ${opcionNombre.toLowerCase()} y listo 🙂`); $w('#ddOpcion').focus(); return; }
-    opciones[opcionNombre] = $w('#ddOpcion').value;
-  }
   $w('#btnComprarAhora').disable();
   $w('#btnComprarAhora').label = 'PREPARANDO TU PAGO…';
 
+  try {
+  const opciones = await $w('#productPage1').getSelectedChoices();
+  const cantidad = await $w('#productPage1').getQuantity();
+  for (const [clave, opcion] of Object.entries(producto.productOptions || {})) {
+    if (!opciones?.[opcion.name || clave]) { errorSuave(`Selecciona ${opcion.name || clave} en la ficha.`); return; }
+  }
   const guardados = forzarHoja ? null : leerDatos();
-  const base = { productId: producto._id, opciones, cantidad: 1 };
+  const base = { productId: producto._id, opciones, cantidad };
   const hoja = (error) => wixWindowFrontend.openLightbox('CompraExpress',
-    { ...base, error, nombre: producto.name, precio: producto.formattedPrice, imagen: imgUrl(producto.mainMedia) });
+    { ...base, error, nombre: producto.name, precio: producto.formattedDiscountedPrice || producto.formattedPrice, imagen: imgUrl(producto.mainMedia) });
 
   // Cliente que ya compró en este dispositivo → directo al pago con todo prellenado (2 clics)
   // Cliente nuevo → hoja rápida de datos con autocompletado (3 clics)
@@ -96,13 +93,19 @@ async function comprarAhora(forzarHoja) {
   let res = guardados ? await crearCompraDirecta({ ...base, datos: guardados })
           : miembro ? await crearCompraDirecta(base)
           : await hoja();
-  if (guardados && !res.ok && res.campo !== 'producto') res = await hoja(res.error); // datos viejos → corregir en la hoja
+  if (guardados && res && !res.ok && res.campo !== 'producto') res = await hoja(res.error); // datos viejos → corregir en la hoja
 
   if (res?.ok && res.checkoutId) {
-    await wixEcomFrontend.navigateToCheckoutPage(res.checkoutId, { skipDeliveryStep: !miembro, hideContinueBrowsingButton: true });
+    await wixEcomFrontend.navigateToCheckoutPage(res.checkoutId, { skipDeliveryStep: false, hideContinueBrowsingButton: true });
     return;
   }
   $w('#btnComprarAhora').label = `COMPRAR AHORA · ${producto.formattedDiscountedPrice || producto.formattedPrice}`;
   if (res && !res.ok) errorSuave(res.error);
   else $w('#btnComprarAhora').enable(); // cerró la hoja sin terminar
+  } catch (e) {
+    errorSuave('No pudimos preparar tu pago. Intenta de nuevo.');
+  } finally {
+    $w('#btnComprarAhora').label = `COMPRAR AHORA · ${producto.formattedDiscountedPrice || producto.formattedPrice}`;
+    $w('#btnComprarAhora').enable();
+  }
 }

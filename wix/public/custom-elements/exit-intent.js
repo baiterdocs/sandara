@@ -11,6 +11,7 @@ class ExitIntent extends HTMLElement {
     let lastY = scrollY, lastT = Date.now(), idle;
 
     const disparar = (motivo) => {
+      if (document.activeElement?.matches('input, textarea, select, [contenteditable="true"]') || /checkout|cart|carrito|pago/i.test(location.pathname)) return;
       if (Date.now() < armarDesde || sessionStorage.getItem('sd_exit')) return;
       sessionStorage.setItem('sd_exit', '1');
       this.dispatchEvent(new CustomEvent('salida', {
@@ -29,11 +30,13 @@ class ExitIntent extends HTMLElement {
     const limpiar = () => {
       document.removeEventListener('mouseout', onOut);
       removeEventListener('scroll', onScroll);
+      for (const evento of ['pointerdown', 'keydown', 'input', 'touchstart']) document.removeEventListener(evento, reiniciarIdle);
       clearTimeout(idle);
     };
 
     if (matchMedia('(pointer:fine)').matches) document.addEventListener('mouseout', onOut);
     else { addEventListener('scroll', onScroll, { passive: true }); reiniciarIdle(); }
+    for (const evento of ['pointerdown', 'keydown', 'input', 'touchstart']) document.addEventListener(evento, reiniciarIdle, { passive: true });
     this._limpiar = limpiar;
   }
   disconnectedCallback() { this._limpiar?.(); }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Colección · Sandara</title>
-<meta name="description" content="Aretes, dijes, anillos, cadenas y pulseras de plata 950, plata 925 y acero hipoalergénico.">
+<meta name="description" content="Joyería de autor en plata, elaborada en Sandara, y bisutería de alta calidad de Selección Sandara.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="sim/styles.css"><link rel="stylesheet" href="sim/site.css">
@@ -15,7 +15,7 @@
 <main>
   <header class="col-hd wrap">
     <h1 id="titulo">Colección</h1>
-    <p>Piezas de autor en plata 950, plata 925 y acero hipoalergénico. Toca una pieza para verla de cerca o cómprala directo.</p>
+    <p>Joyería de autor en plata, elaborada en Sandara, y bisutería de alta calidad de Selección Sandara. Descubre los materiales y detalles en la ficha de cada pieza.</p>
   </header>
 
   <div class="toolbar">
@@ -54,7 +54,7 @@ Sandara.catalogo().then((cat) => {
     let items = cat.filter((p) => coincide(p, filtro));
     if (orden.value === 'asc') items = [...items].sort((a, b) => a.precio - b.precio);
     if (orden.value === 'desc') items = [...items].sort((a, b) => b.precio - a.precio);
-    items = [...items.filter((p) => !p.agotado), ...items.filter((p) => p.agotado)]; // agotados al final
+    if (orden.value === 'nuevo') items.sort((a, b) => Number(a.agotado) - Number(b.agotado) || Number(b.badge === 'Nuevo') - Number(a.badge === 'Nuevo'));
     lista.innerHTML = items.map(Sandara.card).join('');
     document.getElementById('cuenta').textContent = `${items.length} ${items.length === 1 ? 'pieza' : 'piezas'}`;
     document.getElementById('titulo').textContent = TITULOS[filtro];
@@ -70,6 +70,13 @@ Sandara.catalogo().then((cat) => {
   orden.addEventListener('change', pintar);
   Sandara.bindNotify(lista);
   pintar();
+}).catch(() => {
+  const estado = document.getElementById('cuenta');
+  estado.textContent = 'No se pudo cargar el catálogo. ';
+  const reintentar = document.createElement('button');
+  reintentar.type = 'button'; reintentar.textContent = 'Reintentar';
+  reintentar.addEventListener('click', () => location.reload());
+  estado.appendChild(reintentar);
 });
 </script>
 </body>

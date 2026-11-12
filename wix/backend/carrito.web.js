@@ -8,11 +8,12 @@ const n = (x) => Number.parseFloat(x?.amount ?? 0) || 0;
 // Barra de envío gratis + resumen. Llamar desde carrito, producto y masterPage.
 export const resumenCarrito = webMethod(Permissions.Anyone, async () => {
   try {
-    const t = await currentCart.estimateCurrentCartTotals();
+    const [t, cart] = await Promise.all([currentCart.estimateCurrentCartTotals(), currentCart.getCurrentCart()]);
     const subtotal = n(t?.priceSummary?.subtotal);
-    const unidades = (t?.lineItems || []).reduce((s, li) => s + (li.quantity || 0), 0);
+    const unidades = (cart?.lineItems || []).reduce((s, li) => s + (li.quantity || 0), 0);
     const falta = Math.max(0, +(UMBRAL_ENVIO_GRATIS - subtotal).toFixed(2));
     return {
+      disponible: true,
       unidades,
       subtotal,
       subtotalTxt: t?.priceSummary?.subtotal?.formattedAmount || 'S/ 0.00',
@@ -22,8 +23,7 @@ export const resumenCarrito = webMethod(Permissions.Anyone, async () => {
       envioGratis: falta === 0 && subtotal > 0,
     };
   } catch (e) {
-    // Carrito inexistente = vacío (primer visita).
-    return { unidades: 0, subtotal: 0, subtotalTxt: 'S/ 0.00', umbral: UMBRAL_ENVIO_GRATIS,
-             falta: UMBRAL_ENVIO_GRATIS, progreso: 0, envioGratis: false };
+    // Un fallo de red o permisos no demuestra que el carrito esté vacío.
+    return { disponible: false, umbral: UMBRAL_ENVIO_GRATIS };
   }
 });

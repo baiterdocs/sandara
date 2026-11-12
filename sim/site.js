@@ -30,8 +30,8 @@
       <nav aria-label="Principal">${navHtml}</nav>
       <a class="logo" href="inicio.html" aria-label="Sandara, inicio"><img src="sim/assets/logo-blanco.png" alt="Sandara" width="100" height="30"></a>
       <div class="tools">
-        <a href="coleccion.html" aria-label="Buscar" style="color:#fff;width:44px;height:44px;display:grid;place-items:center">${ICON('search')}</a>
-        <button aria-label="Bolsa de muestra, sin carrito conectado" disabled title="Carrito de muestra">${ICON('bag')}<span class="count" aria-hidden="true">0</span></button>
+        <a href="coleccion.html" aria-label="Ver colección" style="color:#fff;width:44px;height:44px;display:grid;place-items:center">${ICON('search')}</a>
+        <button aria-label="Carrito de muestra, sin carrito conectado" disabled title="Carrito de muestra">${ICON('bag')}<span class="count" aria-hidden="true">0</span></button>
       </div>
     </header>
     <div class="drawer" aria-hidden="true" inert>
@@ -47,7 +47,7 @@
   if (ft) ft.outerHTML = `
     <footer class="ft2 on-dark">
       <div class="cols">
-        <div><img src="sim/assets/logo-blanco.png" alt="Sandara" width="93" height="28"><p>Joyería minimalista, hecha para acompañar el día a día.</p></div>
+        <div><img src="sim/assets/logo-blanco.png" alt="Sandara" width="93" height="28"><p>Joyería de autor en plata y bisutería de Selección Sandara.</p></div>
         <div><h3>Comprar</h3><ul><li><a href="coleccion.html?c=aretes">Aretes</a></li><li><a href="coleccion.html?c=dije">Dijes</a></li><li><a href="coleccion.html?c=anillo">Anillos</a></li><li><a href="coleccion.html?c=cadena">Cadenas y pulseras</a></li></ul></div>
         <div><h3>Ayuda</h3><ul><li><a href="ayuda.html#envios">Envíos</a></li><li><a href="ayuda.html#cambios">Cambios</a></li><li><a href="ayuda.html#cuidado">Cuidado de tus joyas</a></li><li><a href="ayuda.html#faq">Preguntas frecuentes</a></li></ul></div>
         <div><h3>Contacto</h3><ul><li><a href="https://wa.link/yhg8b4" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/sandara.pe/" rel="noopener">Instagram</a></li><li>Lima, Perú</li></ul></div>
@@ -71,11 +71,23 @@
   document.querySelectorAll('[data-menu-close]').forEach((b) => b.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && body.classList.contains('menu-open')) setMenu(false); });
 
+  // Mantener la navegación de teclado dentro del panel abierto.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !body.classList.contains('menu-open')) return;
+    const root = document.querySelector('.drawer');
+    const controles = [...root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]')]
+      .filter(el => el.getClientRects().length && !el.closest('[inert]'));
+    if (!controles.length) { e.preventDefault(); return; }
+    const primero = controles[0], ultimo = controles[controles.length - 1];
+    if (!root.contains(document.activeElement) || (e.shiftKey && document.activeElement === primero)) { e.preventDefault(); (e.shiftKey ? ultimo : primero).focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+  });
+
   // Catálogo
   const soles = (n) => 'S/ ' + n.toFixed(2);
   window.Sandara = {
     ICON, soles,
-    catalogo: () => fetch('sim/catalogo.json').then((r) => r.json()),
+    catalogo: () => fetch('sim/catalogo.json').then((r) => { if (!r.ok) throw new Error('No se pudo cargar el catálogo'); return r.json(); }),
     card: (p) => `
       <li class="card${p.agotado ? ' agotado' : ''}" data-id="${p.id}">
         <a href="index_simulacion.html?p=${p.id}">
@@ -96,12 +108,14 @@
       root.addEventListener('click', (e) => {
         const b = e.target.closest('.js-notify'); if (!b) return;
         const f = b.nextElementSibling; const on = !f.classList.contains('on');
-        f.classList.toggle('on', on); b.setAttribute('aria-expanded', String(on)); if (on) f.querySelector('input').focus();
+        f.classList.toggle('on', on); b.setAttribute('aria-expanded', String(on)); if (on) f.querySelector('input')?.focus();
       });
       root.addEventListener('submit', (e) => {
         const f = e.target.closest('.notify'); if (!f) return; e.preventDefault();
         const v = f.querySelector('input').value.trim();
         if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)) { f.querySelector('input').setAttribute('aria-invalid', 'true'); f.querySelector('input').focus(); return; }
+        f.previousElementSibling.disabled = true;
+        f.previousElementSibling.setAttribute('aria-expanded', 'true');
         f.outerHTML = `<p class="notify-ok" role="status">${ICON('check')}Demostración: no se guardó el correo ni se enviarán avisos.</p>`;
       });
     },

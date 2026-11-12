@@ -19,6 +19,7 @@ $w.onReady(async () => {
 async function pintarEnvio() {
   if (!$w('#txtEnvio').id) return;
   const r = await resumenCarrito();
+  if (!r.disponible) { $w('#txtEnvio').text = `Envío gratis desde S/ ${r.umbral}. Consulta la cobertura al pagar.`; return; }
   $w('#txtEnvio').text = r.envioGratis
     ? '✓ Tu pedido tiene ENVÍO GRATIS en Lima'
     : r.subtotal > 0
@@ -36,6 +37,7 @@ async function armarSalida() {
   $w('#exitIntent').on('salida', async ({ detail }) => {
     local.setItem('sd_exit_ts', String(Date.now()));
     const r = await resumenCarrito();
+    if (!r.disponible) return;
     // Con carrito: recordar envío gratis. Sin carrito: captar lead.
     wixWindowFrontend.openLightbox('Salida', { ...detail, carrito: r });
   });

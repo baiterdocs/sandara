@@ -11,11 +11,18 @@
 | | |
 |---|---|
 | Nombre | **SANDARA** (siempre en mayúsculas en el logotipo) |
-| Categoría | Joyería de autor — plata 950 / 925 y acero hipoalergénico con piedras naturales (Lima, Perú) |
-| Bio de Instagram | "SANDARA \| Joyería & Diseño · Diseño de autor y tendencias seleccionadas. • Piezas hipoalergénicas • Plata 950 & 925 •" |
+| Categoría | Joyería de autor en plata, elaborada en Sandara, y bisutería de alta calidad de **Selección Sandara** |
+| Bio de Instagram observada el 10-nov-2026 (referencia histórica, no texto aprobado) | "SANDARA \| Joyería & Diseño · Diseño de autor y tendencias seleccionadas. • Piezas hipoalergénicas • Plata 950 & 925 •" |
 | Tagline del footer | "Joyería minimalista, hecha para acompañar el día a día." / "Diseño minimalista · Lima, Perú" |
 | Tono | Minimalista, elegante, cercano, artesanal ("Atelier", "cada detalle", "delicadeza"). Español peruano, tuteo ("Únete", "Descubre"). |
 | Personalidad visual | Monocromo negro/blanco, mucho aire, la joya como protagonista sobre fondo claro; toques de lujo vía serif clásica en mayúsculas. |
+
+**Criterio de marca confirmado por Luis (12-nov-2026)**
+- **Joyería de autor** es esencial en la identidad de Sandara y se mantiene en la comunicación de sus piezas de plata. Todas las piezas de plata se elaboran en Sandara.
+- La bisutería se presenta públicamente como **Selección Sandara**. No incluir nombres de proveedores en textos, metadatos ni materiales públicos.
+- No atribuir a la bisutería fabricación propia. No extender a toda la colección propiedades de una pieza, como material, baño, piedras naturales o carácter hipoalergénico.
+- Portada (actualizado 12-nov-2026, decisión de Luis): se adopta la portada del artboard «Web — home propuesta»: franja negra con el titular «Joyería de autor en plata 950», subtítulo, botones «Ver el atelier» y «Novedades», y foto a la derecha; debajo, bloque «Atelier / Selección Sandara». Reemplaza la regla anterior de mantener retirado el bloque de portada.
+- Mantener el logotipo original, la paleta blanca y negra y las tipografías de la marca.
 
 **Mensajes clave observados**
 - "DESCUBRE SANDARA" · "EL ATELIER" · "Novedades antes que nadie"

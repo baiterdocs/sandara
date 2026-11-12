@@ -1,5 +1,5 @@
 // public/datos-cliente.js — "Recordar mis datos en este dispositivo" (opt-in, 90 días).
-// Solo contacto y dirección de envío; nunca pagos. Borrable con un clic.
+// Solo contacto y dirección de envío; nunca pagos. La interfaz debe conectar borrarDatos() a un control para olvidar los datos.
 import { local } from 'wix-storage-frontend';
 
 const KEY = 'sd_datos';
@@ -12,7 +12,10 @@ export function leerDatos() {
     return v.d;
   } catch (e) { return null; }
 }
-export const guardarDatos = (d) => local.setItem(KEY, JSON.stringify({ t: Date.now(), d }));
+export const guardarDatos = (d) => {
+  try { local.setItem(KEY, JSON.stringify({ t: Date.now(), d })); return true; }
+  catch (e) { return false; } // El almacenamiento bloqueado no debe impedir la compra.
+};
 export const borrarDatos = () => local.removeItem(KEY);
 
 // Validaciones amables (mismas reglas que backend/validar.js)

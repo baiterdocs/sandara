@@ -1,6 +1,13 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "simulacion", "runtimeExecutable": "node", "runtimeArgs": ["-e", "const h=require('http'),f=require('fs'),p=require('path');const R='/Users/luis/Desktop/SANDARA';const T={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.png':'image/png','.jpg':'image/jpeg'};h.createServer((q,s)=>{const o=q.headers.origin||'';if(/^https:\\/\\/[a-z0-9-]+\\.editor\\.wix\\.com$/.test(o)){s.setHeader('Access-Control-Allow-Origin',o);s.setHeader('Access-Control-Allow-Private-Network','true');s.setHeader('Access-Control-Allow-Methods','GET');s.setHeader('Access-Control-Allow-Headers','*')}if(q.method==='OPTIONS'){s.writeHead(204);return s.end()}let u=decodeURIComponent(q.url.split('?')[0]);if(u==='/')u='/inicio.html';const fp=p.join(R,p.normalize(u));if(!fp.startsWith(R)){s.writeHead(403);return s.end()}f.readFile(fp,(e,d)=>{if(e){s.writeHead(404);return s.end('404')}s.writeHead(200,{'Content-Type':T[p.extname(fp)]||'application/octet-stream'});s.end(d)})}).listen(+process.env.PORT||8765,'127.0.0.1')"], "port": 8765 }
+    {
+      "name": "simulacion",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/preview.cjs"
+      ],
+      "port": 8765
+    }
   ]
 }

@@ -198,3 +198,67 @@ a.btn { text-decoration: none; }
   .ft2 .cols { grid-template-columns: 1fr; gap: 28px; }
   .sec-head { flex-direction: column; align-items: start; gap: 12px; }
 }
+
+/* ───── Home · artboard «Web — home propuesta» (12-nov-2026) ─────
+   Blanco y negro de marca, filetes de 1px, fotos en su color natural.
+   La numeración N° queda oculta (atributo hidden) hasta tener los códigos reales. */
+.kicker { font: 400 15px/1 var(--display); letter-spacing: .2em; }
+
+.hero-b { display: flex; flex-wrap: wrap; background: var(--ink); color: var(--paper); }
+.hero-b .copy { flex: 1 1 440px; min-height: 560px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
+  padding: 64px var(--gutter) 56px max(var(--gutter), calc((100vw - 1360px) / 2 + var(--gutter))); }
+.hero-b h1 { font: 400 clamp(40px, 5.4vw, 84px)/1.02 var(--display); max-width: 12ch; text-wrap: balance; margin-block: auto; }
+.hero-b .foot { display: flex; flex-direction: column; gap: 28px; border-top: 1px solid var(--paper); padding-top: 24px; }
+.hero-b p { color: #C9C7C4; font-size: 18px; max-width: 40ch; }
+.hero-b .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-b figure { flex: 1 1 440px; min-height: 560px; position: relative; overflow: hidden; }
+.hero-b figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation: settle 1.6s var(--ease) both; }
+
+.btn-solid-light, .btn-line.light { display: inline-flex; align-items: center; min-height: 52px; padding: 0 32px; font-size: 14px; font-weight: 600;
+  letter-spacing: var(--caps); text-transform: uppercase; text-decoration: none; transition: background-color .25s var(--ease), color .25s var(--ease); }
+.btn-solid-light { background: var(--paper); color: var(--ink); border: 1px solid var(--paper); }
+.btn-solid-light:hover { background: transparent; color: var(--paper); }
+.btn-line.light { color: var(--paper); border-color: var(--paper); }
+.btn-line.light:hover { background: var(--paper); color: var(--ink); }
+.btn-link.light { align-self: flex-start; color: var(--paper); border-bottom: 1px solid var(--paper); padding: 10px 0; font-size: 14px; font-weight: 600;
+  letter-spacing: var(--caps); text-transform: uppercase; text-decoration: none; }
+
+.lines { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); border-bottom: 1px solid var(--ink); }
+.lines a { min-height: 220px; padding: 48px var(--gutter); display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+  color: var(--ink); text-decoration: none; transition: background-color .3s var(--ease), color .3s var(--ease); }
+.lines a + a { border-left: 1px solid var(--ink); }
+.lines strong { font: 400 clamp(34px, 3.6vw, 48px)/1.05 var(--display); }
+.lines .desc { color: var(--graphite); font-size: 16px; }
+.lines a:hover { background: var(--ink); color: var(--paper); }
+.lines a:hover .desc { color: #C9C7C4; }
+.num { font: 400 13px/1 var(--display); letter-spacing: .2em; }
+.num[hidden] { display: none; }
+
+.news { padding-block: 72px 96px; }
+.news .sec-head { border-bottom: 1px solid var(--ink); padding-bottom: 16px; }
+.news .card .ph { aspect-ratio: 4 / 5; border: 1px solid var(--ink); background: var(--mist); }
+.news .card h3 { font-weight: 400; font-size: 20px; border-top: 1px solid var(--ink); padding-top: 12px; }
+.news .card .pr { color: var(--charcoal); }
+
+.atelier-band { background: var(--ink); }
+.atelier-band .copy { gap: 22px; }
+.atelier-band p { color: #C9C7C4; }
+
+.quote { display: flex; flex-direction: column; align-items: center; gap: 28px; padding-block: 96px; }
+.quote blockquote { font-size: clamp(26px, 3vw, 40px); }
+.quote cite { margin-top: 0; color: var(--ink); letter-spacing: var(--caps); text-transform: uppercase; font-size: 13px;
+  border-top: 1px solid var(--ink); padding-top: 14px; }
+
+.channel { background: var(--paper); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 48px 0; text-align: left; }
+.channel .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+.channel .wrap > div { flex: 1 1 420px; }
+.channel p { margin: 10px 0 0; max-width: none; }
+.channel .btn { background: var(--ink); }
+
+@media (max-width: 860px) {
+  .hero-b figure { order: -1; min-height: 0; aspect-ratio: 4 / 5; flex-basis: 100%; }
+  .hero-b .copy { min-height: 0; padding: 32px var(--gutter) 40px; gap: 28px; }
+  .hero-b .ctas a { flex: 1; justify-content: center; }
+  .lines a + a { border-left: 0; border-top: 1px solid var(--ink); }
+  .lines a { min-height: 0; padding: 32px var(--gutter); }
+}

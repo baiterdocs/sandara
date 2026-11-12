@@ -10,13 +10,14 @@ const META_APP_ID = 'XXXXXXXXXXXXXXX';
 
 $w.onReady(async () => {
   $w('#txtOkGuardar').collapse();
+  if (GOOGLE_CLIENT_ID.includes('XXXX') || META_APP_ID.includes('XXXX')) { $w('#boxGuardar').collapse(); return; }
   const [order, miembro] = await Promise.all([
     $w('#thankYouPage1').getOrder().catch(() => null),
     currentMember.getMember().catch(() => null),
   ]);
   if (miembro || !order) { $w('#boxGuardar').collapse(); return; }
 
-  $w('#txtGuardar').text = `¡Gracias${order.billingInfo?.firstName ? ', ' + order.billingInfo.firstName : ''}! ¿Guardamos tus datos para que tu próxima compra sea en 1 clic?`;
+  $w('#txtGuardar').text = `¡Gracias${order.billingInfo?.firstName ? ', ' + order.billingInfo.firstName : ''}! ¿Quieres iniciar sesión para tu próxima compra?`;
   $w('#socialLogin').setAttribute('google-client-id', GOOGLE_CLIENT_ID);
   $w('#socialLogin').setAttribute('meta-app-id', META_APP_ID);
 
@@ -25,7 +26,7 @@ $w.onReady(async () => {
     if (!r?.ok) { $w('#txtOkGuardar').text = r?.error || 'No se pudo guardar. Tu compra está confirmada igual.'; $w('#txtOkGuardar').expand(); return; }
     await authentication.applySessionToken(r.sessionToken);
     $w('#socialLogin').collapse();
-    $w('#txtOkGuardar').text = '✓ Listo. La próxima vez solo tocas "Comprar ahora".';
+    $w('#txtOkGuardar').text = 'Sesión iniciada. Revisa tus datos de entrega antes de tu próxima compra.';
     $w('#txtOkGuardar').expand();
   });
 

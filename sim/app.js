@@ -23,7 +23,7 @@
       $('#p-nombre').textContent = p.nombre; $('#it-nombre').textContent = p.nombre;
       $$('.js-precio').forEach((e) => { e.textContent = precioTxt; });
       $('#p-precio').textContent = precioTxt;
-      $('#p-lede').textContent = 'Pieza de nuestro Atelier, elaborada con especial cuidado y atención a cada detalle.';
+      $('#p-lede').textContent = 'Consulta los materiales y detalles de esta pieza en su ficha de Sandara.';
       $('#crumb-cat').textContent = CATS[p.cat];
       $('#crumb-cat').href = `coleccion.html?c=${p.cat === 'pulsera' ? 'cadena' : p.cat}`;
       $('#stage').src = p.img_local; $('#stage').alt = p.nombre; $('#it-img').src = p.img_local;
@@ -53,6 +53,18 @@
   $$('.js-buy').forEach((b) => b.addEventListener('click', abrir));
   $$('[data-close]').forEach((b) => b.addEventListener('click', cerrar));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && body.classList.contains('open')) cerrar(); });
+
+  // Mantener la navegación de teclado dentro del panel abierto.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !body.classList.contains('open')) return;
+    const root = panel;
+    const controles = [...root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]')]
+      .filter(el => el.getClientRects().length && !el.closest('[inert]'));
+    if (!controles.length) { e.preventDefault(); return; }
+    const primero = controles[0], ultimo = controles[controles.length - 1];
+    if (!root.contains(document.activeElement) || (e.shiftKey && document.activeElement === primero)) { e.preventDefault(); (e.shiftKey ? ultimo : primero).focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+  });
 
   // Validación: ayuda al enfocar, error solo al salir del campo, éxito en vivo
   const RX_EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,24}$/i;

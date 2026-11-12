@@ -9,6 +9,11 @@ const META_APP_ID = 'XXXXXXXXXXXXXXX';                            // público
 
 $w.onReady(() => {
   $w('#txtErrLogin').collapse();
+  if (GOOGLE_CLIENT_ID.includes('XXXX') || META_APP_ID.includes('XXXX')) {
+    $w('#socialLogin').collapse();
+    $w('#txtErrLogin').text = 'Utiliza el acceso de miembros de la tienda.';
+    $w('#txtErrLogin').expand(); return;
+  }
   $w('#socialLogin').setAttribute('google-client-id', GOOGLE_CLIENT_ID);
   $w('#socialLogin').setAttribute('meta-app-id', META_APP_ID);
 
@@ -18,6 +23,6 @@ $w.onReady(() => {
     if (!r?.ok) { $w('#txtErrLogin').text = r?.error || 'No pudimos iniciar sesión.'; $w('#txtErrLogin').expand(); return; }
     await authentication.applySessionToken(r.sessionToken);
     const destino = wixLocationFrontend.query.volver;
-    wixLocationFrontend.to(destino && destino.startsWith('/') && !destino.startsWith('//') ? destino : '/');
+    wixLocationFrontend.to(typeof destino === 'string' && /^\/(?![\/\\])/.test(destino) && !/[\\\x00-\x20%]/.test(destino) ? destino : '/');
   });
 });

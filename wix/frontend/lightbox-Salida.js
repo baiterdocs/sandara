@@ -15,7 +15,7 @@ $w.onReady(() => {
   const c = ctx.carrito;
   if (c?.unidades > 0 && !c.envioGratis) {
     $w('#txtTitulo').text = '¿Te vas tan pronto?';
-    $w('#txtSub').text = `Te faltan S/ ${c.falta.toFixed(2)} para envío gratis. Déjanos tu correo y te enviamos 10% de descuento.`;
+    $w('#txtSub').text = `Te faltan S/ ${c.falta.toFixed(2)} para envío gratis. Déjanos tu correo y consulta aquí tu código de 10% de descuento.`;
   } else {
     $w('#txtTitulo').text = 'Tu primera joya, 10% menos';
     $w('#txtSub').text = 'Déjanos tu correo y recibe tu código al instante.';
@@ -68,7 +68,7 @@ async function enviar() {
     $w('#btnEnviar').label = 'QUIERO MI 10%'; $w('#btnEnviar').enable();
     return;
   }
-  local.setItem('sd_lead', '1');
+  try { local.setItem('sd_lead', '1'); } catch (e) { /* El código sigue disponible sin almacenamiento local. */ }
   $w('#txtCupon').text = r.cupon;
   $w('#boxForm').collapse(); $w('#boxExito').expand();
 }

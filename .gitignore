@@ -10,3 +10,7 @@ node_modules/
 # herramientas locales
 .firecrawl/
 .claude/settings.local.json
+
+# binarios del motor de impeccable (se descargan solos)
+.agents/skills/impeccable/scripts/bin/
+.claude/skills/impeccable/scripts/bin/

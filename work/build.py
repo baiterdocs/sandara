@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
 """Sandara reel re-edit. Usage: build.py base | preview t1 t2 ... | final"""
-import sys, subprocess, os, math
+import sys, subprocess, os, math, argparse
+
+parser = argparse.ArgumentParser(description="Genera el reel de Sandara. Requiere numpy, Pillow y ffmpeg.")
+parser.add_argument("mode", choices=["info", "base", "bounds", "preview", "final"])
+parser.add_argument("values", nargs="*")
+parser.add_argument("--source", default=os.environ.get("SANDARA_VIDEO_SOURCE"))
+args = parser.parse_args()
+if args.mode == "base" and (not args.source or not os.path.isfile(args.source)):
+    parser.error("Indica un video existente con --source.")
+if args.mode == "final" and len(args.values) != 1:
+    parser.error("final requiere una ruta de salida.")
+if args.mode == "preview" and not args.values:
+    parser.error("preview requiere uno o más tiempos en segundos.")
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SRC = "/Users/luis/Downloads/WhatsApp Video 2026-11-10 at 22.19.59.mp4"
+SRC = args.source
 OUT = os.path.join(ROOT, "out"); os.makedirs(OUT, exist_ok=True)
 W, H, FPS = 1080, 1920, 30
 BAND_Y = 1210
@@ -166,7 +178,7 @@ EMPTY = bytes(W * H * 4)
 # ---------------------------------------------------------------- assets
 def load(n): return Image.open(os.path.join(ROOT, "img", n)).convert("RGB")
 IMG_A, IMG_B, IMG_C, IMG_E = load("15.jpg"), load("37.jpg"), load("16.jpg"), load("01.jpg")
-_logo = Image.open(os.path.join(ROOT, "..", ".firecrawl", "logo.png")).convert("RGBA")
+_logo = Image.open(os.path.join(ROOT, "..", "sim", "assets", "logo-blanco.png")).convert("RGBA")
 bb = _logo.split()[3].getbbox(); _logo = _logo.crop(bb)
 def logo(width, color):
     l = _logo.resize((width, int(_logo.height * width / _logo.width)), Image.LANCZOS)
@@ -397,18 +409,19 @@ def render(out_path, frames=None, crf=17):
         p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
         for i in range(NFR):
             p.stdin.write(frame(i / FPS))
-        p.stdin.close(); p.wait()
+        p.stdin.close()
+        if p.wait() != 0: raise subprocess.CalledProcessError(p.returncode, cmd)
     else:
         for t in frames:
             n = int(round(t * FPS)); tt = n / FPS
             raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{tt:.4f}", "-i", base, "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
-                                 capture_output=True).stdout
+                                 capture_output=True, check=True).stdout
             bg = Image.frombytes("RGB", (W, H), raw).convert("RGBA")
             fg = Image.frombytes("RGBA", (W, H), frame(tt))
             Image.alpha_composite(bg, fg).convert("RGB").resize((W // 2, H // 2), Image.LANCZOS).save(os.path.join(OUT, f"pv_{tt:06.2f}.jpg"), quality=88)
 
 if __name__ == "__main__":
-    mode = sys.argv[1]
+    mode = args.mode
     if mode == "info":
         print("BODY", BODY, "TOTAL", TOTAL, "frames", NFR)
         for (a, b), off in zip(SEGS, OFF): print(f"  src {a:6.2f}-{b:6.2f} -> out {off:6.2f}-{off+b-a:6.2f}")
@@ -417,5 +430,5 @@ if __name__ == "__main__":
         ts = []
         for a, b in SP_OUT[1:]: ts += [a - 1 / FPS, a]
         print(" ".join(f"{x:.3f}" for x in ts)); render(None, ts)
-    elif mode == "preview": render(None, [float(x) for x in sys.argv[2:]])
-    elif mode == "final": render(sys.argv[2])
+    elif mode == "preview": render(None, [float(x) for x in args.values])
+    elif mode == "final": render(args.values[0])
