@@ -1,134 +1,80 @@
-# Sandara — Branding y sistema de diseño
+# Sandara — sistema visual (blanco y negro de alto diseño, vigente desde 13-nov-2026)
 
-> Fuentes: https://www.sandara.pe/ (captura Firecrawl + navegador, 10-nov-2026, escritorio 1920px) e https://www.instagram.com/sandara.pe/ (perfil público, sin iniciar sesión).
-> Evidencia guardada: `.firecrawl/design-reference.json`, `.firecrawl/design-reference.png` (página completa), `.firecrawl/logo.png`, `.firecrawl/og.png`.
-> Leyenda: **[medido]** = valor leído del CSS computado · **[visual]** = estimado a partir de capturas · **[propuesta]** = sugerencia de implementación.
+> Fuentes: `Sistema visual — propuesta.pdf` (Propuesta 02) y la home «Web — home propuesta» de Claude Design (canvas «Sandara · Exploraciones de marca»). Reemplaza el sistema anterior de negro y blanco puro de Wix.
+> Lo que NO cambia: el logotipo (serif de alto contraste, solo en negro o blanco), Cinzel y Avenir (Nunito Sans de respaldo web), los nombres con identidad (Qantu, Señor de los Milagros) y el empaque blanco y negro.
 
----
+## 1. Qué es Sandara (hechos confirmados)
 
-## 1. Esencia de marca
+- Joyería de Lima, Perú. Dos materiales:
+  1. **Plata 950 y 925**, elaborada en Sandara. «Joyería de autor» es esencial a la identidad.
+  2. **Acero hipoalergénico con doble enchapado de oro de 18 k.**
+- **Selección Sandara:** bisutería de alta calidad elegida por su diseño. No se nombran proveedores ni se atribuye fabricación propia.
+- **Cada ficha dice su material exacto:** si es plata, plata; si es acero, acero con doble enchapado de oro de 18 k; con el nombre de las piedras cuando las hay. Nunca se extiende la propiedad de una pieza a toda la colección. Un mensaje general (cintillo, título SEO) debe nombrar los dos materiales, no solo «plata» ni solo «hipoalergénico».
+- Pendiente de confirmar con Sandra: si el acero con oro de 18 k va bajo «Selección Sandara» o es una línea propia.
+- Pagos manuales (Yape, Plin, transferencia) coordinados por WhatsApp. No hay pasarela.
 
-| | |
-|---|---|
-| Nombre | **SANDARA** (siempre en mayúsculas en el logotipo) |
-| Categoría | Joyería de autor en plata, elaborada en Sandara, y bisutería de alta calidad de **Selección Sandara** |
-| Bio de Instagram observada el 10-nov-2026 (referencia histórica, no texto aprobado) | "SANDARA \| Joyería & Diseño · Diseño de autor y tendencias seleccionadas. • Piezas hipoalergénicas • Plata 950 & 925 •" |
-| Tagline del footer | "Joyería minimalista, hecha para acompañar el día a día." / "Diseño minimalista · Lima, Perú" |
-| Tono | Minimalista, elegante, cercano, artesanal ("Atelier", "cada detalle", "delicadeza"). Español peruano, tuteo ("Únete", "Descubre"). |
-| Personalidad visual | Monocromo negro/blanco, mucho aire, la joya como protagonista sobre fondo claro; toques de lujo vía serif clásica en mayúsculas. |
+## 2. Paleta (alto diseño: blanco, negro y la joya como único brillo)
 
-**Criterio de marca confirmado por Luis (12-nov-2026)**
-- **Joyería de autor** es esencial en la identidad de Sandara y se mantiene en la comunicación de sus piezas de plata. Todas las piezas de plata se elaboran en Sandara.
-- La bisutería se presenta públicamente como **Selección Sandara**. No incluir nombres de proveedores en textos, metadatos ni materiales públicos.
-- No atribuir a la bisutería fabricación propia. No extender a toda la colección propiedades de una pieza, como material, baño, piedras naturales o carácter hipoalergénico.
-- Portada (actualizado 12-nov-2026, decisión de Luis): se adopta la portada del artboard «Web — home propuesta»: franja negra con el titular «Joyería de autor en plata 950», subtítulo, botones «Ver el atelier» y «Novedades», y foto a la derecha; debajo, bloque «Atelier / Selección Sandara». Reemplaza la regla anterior de mantener retirado el bloque de portada.
-- Mantener el logotipo original, la paleta blanca y negra y las tipografías de la marca.
+Decisión del 13-nov-2026: se descartan el marfil, el lino y el crema. Se ven «de tienda de barrio». La referencia es la joyería de lujo (Cartier, Louis Vuitton, Gucci): contraste puro, mucho aire y fotografía protagonista.
 
-**Mensajes clave observados**
-- "DESCUBRE SANDARA" · "EL ATELIER" · "Novedades antes que nadie"
-- "Cada pieza de nuestro Atelier es elaborada con especial cuidado, prestando atención a cada detalle…"
-- CTA: "AGREGAR AL CARRITO", "UNIRME AL CANAL" (WhatsApp), "Cargar más", "Vista rápida"
-- Badges: "Nuevo", "Más vendido", "Agotado"
-- Nombres de producto evocadores y femeninos: Azalea, Antonella, Sienna, Liria, Qantu (quechua), Romelia, Dalia, Noir Amour, Áurea, Royal Blue.
-
-## 2. Logotipo
-
-- **Wordmark "SANDARA"**: display de alto contraste — astas gruesas combinadas con diagonales de trazo finísimo (hairline), sin serifas marcadas, estilo editorial/moda. [visual] (`.firecrawl/og.png`)
-- Versiones vistas:
-  - Blanco sobre negro (header y footer del sitio) — `.firecrawl/logo.png` es la versión blanca con fondo transparente.
-  - Negro sobre blanco (OG image, avatar circular de Instagram).
-  - Marca de agua blanca pequeña "SANDARA" abajo-derecha en posts de Instagram.
-- La tipografía exacta del logo no está identificada (es imagen). Alternativas libres parecidas **[propuesta]**: *Bodoni Moda* (mayúsculas, 600), *Playfair Display SC*, *Gloock*. Para fidelidad usar siempre el PNG/SVG original.
-- URLs:
-  - Logo blanco: `https://static.wixstatic.com/media/6720f3_8dc2fac4d8c149219889551bfd6505fd~mv2.png`
-  - Wordmark negro (OG): `https://static.wixstatic.com/media/6720f3_4004e05604414930aa8e0b69f9fcb33f~mv2.png`
-  - Favicon: `https://static.wixstatic.com/media/6720f3_ac8588bf0cea4b7ba636d2c62134a08f~mv2.jpg`
-
-## 3. Color
-
-| Rol | Hex | Fuente | Uso |
+| Token | Nombre | Hex | Uso |
 |---|---|---|---|
-| `--ink` (negro marca) | `#000000` | [medido] | Header, footer, avatar IG, fondos de piezas promocionales ("CYBER WOW") |
-| `--charcoal` (texto / botón) | `#2F2E2E` | [medido] | Texto principal, títulos, botones primarios, banda "El Atelier" |
-| `--graphite` | `#605E5E` | [medido] | Texto secundario / estados |
-| `--paper` | `#FFFFFF` | [medido] | Fondo general, texto sobre negro |
-| `--mist` | `#F6F6F6` | [medido] | Fondo de tarjetas de producto y badges "Nuevo" |
-| `--disabled` | `~#B5B5B5` | [visual] | Botón "AGOTADO" |
-| Acentos de producto | dorado, plata, amatista morado, perla | [visual] | Vienen de la fotografía, no de la UI |
+| `--negro` | Negro | `#0A0A0A` | Texto, botón principal, franjas oscuras, logo |
+| `--blanco` | Blanco | `#FFFFFF` | Fondo general y fondo de producto |
+| `--gris-2` | Gris texto | `#5A5A5A` | Texto secundario sobre blanco (7.0:1) |
+| `--gris-claro` | Gris sobre negro | `#A6A6A6` | Texto secundario sobre negro (8.3:1) |
+| `--gris-fondo` | Gris de foto | `#F2F2F2` | Solo fondo de foto de producto, nunca de sección |
 
-Firecrawl detectó `#2B5672` (azul) y `#E03939` (rojo) como primary/link, pero **no aparecen en ninguna parte visible** — son restos del tema Wix. No usarlos.
+- Sin colores de apoyo: ni dorado, ni beige, ni rojo. Las pocas veces que se necesite un énfasis, es peso o tamaño, no color.
+- Filetes de 1 px en negro sobre blanco (o blanco sobre negro) como único adorno.
+- El color lo pone la joya: oro de 18 k, plata, piedras. Fotos en su color natural, enmarcadas por blanco o negro.
+- En Wix: base clara `#FFFFFF`, base oscura `#0A0A0A`, acentos en negro y gris `#6B6B6B`.
 
-**Regla**: paleta estrictamente acromática; el color lo aporta la joya.
+## 3. Tipografía
 
-## 4. Tipografía
+| Rol | Fuente | Detalle |
+|---|---|---|
+| Títulos, nombres de pieza, números N° | **Cinzel** 400 | Titular hero `clamp(44px, 5.4vw, 84px)`, interlineado 1.02; sección 44 px; pieza 22 px |
+| Texto, precios, botones | **Avenir** (web: Nunito Sans 300–700) | Cuerpo 16–18 px, interlineado 1.6, medida ≤ 65 caracteres |
+| Etiquetas | Avenir mayúsculas | 12–13 px, tracking 0.2–0.32 em |
 
-| Rol | Familia | Tamaño / peso | Fuente |
-|---|---|---|---|
-| Display / H2 de sección | **Cinzel** (serif romana, solo mayúsculas visuales) | 56px / 400 ("EL ATELIER", "Novedades antes que nadie"); 33px / 400 ("DESCUBRE SANDARA") | [medido] |
-| Nombre de producto | **Cinzel** | 19px / 700, mayúsculas | [medido] |
-| Cuerpo, botones, navegación | **Josefin Sans** | 16–20px / 400; botones en MAYÚSCULAS con tracking amplio | [medido] tracking [visual] |
-| Títulos de slider / precios | Avenir LT 85 Heavy / 35 Light | 20px / 700; 16px light | [medido] |
-| Precio | Josefin Sans / Avenir Light | ~14–16px, gris, formato `S/ 140.00` | [visual] |
+Fuera: scripts y fuentes de campaña (Cyber Wow, Anniversary).
 
-Todas disponibles en Google Fonts salvo Avenir (sustituir por **Nunito Sans** o **Montserrat** light/bold) **[propuesta]**.
+## 4. Componentes
 
-```css
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Josefin+Sans:wght@300;400;600&display=swap');
-```
+- **Filete de 1 px** (`--negro` sobre blanco, `--blanco` sobre negro) como único adorno. Sin sombras, sin degradados, esquinas rectas.
+- **Numeración «N° 07»** en cada pieza, como catálogo de autor, junto a su línea (Atelier o Selección).
+- **Etiqueta de línea:** cuadro de 1 px con el nombre en mayúsculas pequeñas. Distinta para Atelier (borde negro) y para Selección (borde gris `#5A5A5A`).
+- **Botón principal:** fondo negro, texto blanco, mayúsculas con tracking 0.24 em. **Secundario:** borde 1 px negro. Nunca el azul por defecto de Wix.
+- **Tarjeta de pieza:** foto 4:5 con filete, fila «N° · línea», nombre en Cinzel 22 px bajo un filete, precio.
+- **Ritmo de la página:** alternar bloques negro y blanco. La home sigue el artboard de Claude Design: cintillo, encabezado centrado, hero blanco con foto, dos líneas (N° 01 Atelier / N° 02 Selección), Esenciales hoy, bloque «El atelier» con foto y texto, cita de clienta, canal de WhatsApp y pie.
+- **Cintillo superior** (negro, 11 px, tracking): «Plata 950 & 925 · Acero hipoalergénico con doble enchapado de oro 18 k · Envíos a todo el Perú».
 
-## 5. Layout y componentes (escritorio)
+## 5. Pulido (better-ui) para todo HTML y CSS propio
 
-1. **Header** negro sólido, ~180px de alto [medido], logo blanco centrado. Iconos IG/TikTok flotantes abajo-derecha.
-2. **Hero "Descubre Sandara"**: carrusel horizontal de fotos verticales (507×676, ratio 3:4) [medido], mezcla de packshot sobre blanco y fotos de modelo (cuello, oreja, mano) con luz natural.
-3. **Banda "El Atelier"**: fondo `#2F2E2E`, slider de productos destacados con nombre en blanco (Avenir Heavy) y precio debajo, párrafo centrado en Josefin Sans blanco.
-4. **Tienda**: sidebar izquierda con filtros en mayúsculas pequeñas (PLATA DE LEY 950 & 925, ATELIER, ANILLOS, ARETES, PULSERAS, COLLARES, PIERCINGS); grilla de **3 columnas**, imágenes cuadradas sobre `#F6F6F6`, gap ~16px [visual], icono corazón (wishlist) arriba-derecha.
-   - Badge "Nuevo": chip pequeño fondo `#F6F6F6`, texto negro ~11px. "Más vendido": chip gris oscuro con texto blanco.
-   - Botón primario: ancho completo, fondo `#2F2E2E`, texto blanco MAYÚSCULAS Josefin Sans, **border-radius 0**, sin sombra [medido].
-   - Botón secundario ("Cargar más"): blanco con borde 1px charcoal, radius 0 [medido].
-5. **Newsletter/WhatsApp**: título Cinzel 56px, subtítulo pequeño centrado, botón negro "UNIRME AL CANAL".
-6. **Testimonios**: foto full-bleed desenfocada de fondo + tarjeta blanca centrada con cita en Cinzel mayúsculas y autor ("Mariana L., Pe"); flechas finas blancas y puntos.
-7. **Footer** negro: logo blanco + tagline a la izquierda; columnas "CONTACTO" (Whatsapp, Instagram, Lima, Perú) y "SANDARA" (Colección, Nosotros); línea divisoria fina; "© 2026 Sandara".
+- Radios anidados: radio exterior = interior + relleno. Esquinas rectas en botones y tarjetas de marca.
+- Imágenes de contenido con contorno `1px` inset, `oklch(0 0 0 / 0.1)` (nunca un gris cálido, para que no tiña el borde).
+- Botón presionado: escala `0.96` en `150ms ease-out`; deshabilitado no escala.
+- Transiciones nombradas (`opacity`, `background-color`, `scale`), nunca `all`. Hover solo bajo `@media (hover: hover)`.
+- Movimiento detrás de `prefers-reduced-motion: no-preference`; con reducción, solo fundido de opacidad. Una entrada con escalonado de `100ms` como máximo, en el hero.
+- Íconos con `currentColor` y trazo `1.5px`, de una sola librería.
 
-**Principios**: esquinas rectas en todo, sin sombras, divisores de 1px, mucho espacio en blanco, contenido centrado (~1100px de ancho útil [visual]).
+## 6. Cómo se aplica en Wix
 
-## 6. Instagram
+1. **Diseño del sitio → Colores:** base clara #FFFFFF, base oscura #0A0A0A, acentos en negro y gris #6B6B6B. Fondo de página en blanco y texto en negro.
+2. **Temas de texto:** títulos en Cinzel y párrafos en Avenir/Nunito Sans, con los tamaños de §3.
+3. **Botones:** estilo principal y secundario de §4; eliminar el azul.
+4. **Secciones de la home** según el artboard, por fases con publicación entre cada una.
+5. Wix no controla animaciones ni curvas al detalle; esas reglas de §5 aplican solo a HTML propio (simulación local o una web futura).
 
-- Avatar: wordmark negro sobre círculo blanco.
-- Highlights con portadas fotográficas (no iconos): Handmade, Lookbook, Joyas de acero, Comprar, Clientas, Ferias — fotos cálidas, beige/doradas.
-- Feed: fotografía de producto en uso (oreja, mano, muñeca) con fondos verdes de planta desenfocados o superficies claras; packshots sobre gris claro; piezas promo en **fondo negro con titular sans bold blanco en mayúsculas** ("CYBER WOW", "HASTA 50% DE DESCUENTO") y logo abajo.
-- Anotaciones finas tipo flecha + texto pequeño blanco sobre la foto para explicar el producto (estilo editorial).
-- Firma: wordmark "SANDARA" blanco pequeño, abajo-derecha o centrado abajo.
+## 7. Mensajes y términos
 
-## 7. Tokens para implementar [propuesta]
+- Español peruano, tuteo. «Atelier» para la plata de autor; «Selección Sandara» para la bisutería.
+- Evitar frases de relleno («con cuidado en cada detalle»). Preferir hechos: material, piedras, medidas, dónde se elabora.
+- No inventar reseñas, cifras ni certificaciones. Testimonios solo reales y con permiso.
 
-```css
-:root {
-  --ink: #000000;
-  --charcoal: #2F2E2E;
-  --graphite: #605E5E;
-  --paper: #FFFFFF;
-  --mist: #F6F6F6;
-  --disabled: #B5B5B5;
+## 8. Pendientes
 
-  --font-display: 'Cinzel', 'Times New Roman', serif;
-  --font-body: 'Josefin Sans', 'Helvetica Neue', Arial, sans-serif;
-
-  --radius: 0;
-  --border: 1px solid var(--charcoal);
-  --space-unit: 4px;          /* base detectada */
-  --container: 1100px;
-  --tracking-caps: 0.08em;    /* botones y labels en mayúsculas [visual] */
-}
-.btn-primary { background: var(--charcoal); color: var(--paper); font: 400 15px/1 var(--font-body);
-  text-transform: uppercase; letter-spacing: var(--tracking-caps); padding: 12px 20px; border-radius: 0; }
-.btn-secondary { background: var(--paper); color: var(--charcoal); border: var(--border); border-radius: 0; }
-h2.section { font: 400 56px/1.1 var(--font-display); color: var(--charcoal); text-align: center; }
-.product-name { font: 700 19px/1.2 var(--font-display); text-transform: uppercase; }
-```
-
-## 8. Pendientes / límites
-
-- Fuente exacta del wordmark sin identificar (es imagen).
-- Solo se inspeccionó escritorio; no se verificó layout móvil, hovers ni animaciones.
-- Instagram visto sin sesión: solo cabecera, highlights y primeras ~6 publicaciones.
-- Logos, fotos y textos son propiedad de Sandara; úsalos solo si tienes derecho (p. ej., si trabajas para la marca).
+- Foto de Sandra o del atelier y 2–3 líneas suyas para el bloque «El atelier» (el artboard trae un texto de relleno entre corchetes que no se publica).
+- Material y piedras de cada ficha.
+- Confirmar dónde va el acero con oro de 18 k (§1).

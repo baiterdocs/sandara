@@ -19,20 +19,21 @@ sandara.pe es la tienda en línea de Sandara, una marca de joyería de Lima, Per
 - **Joyería de autor en plata 950, elaborada en Sandara.** Todas las piezas de plata se elaboran en Sandara; "de autor" es esencial en la identidad.
 - **Selección Sandara:** la bisutería se presenta como una selección curada de tendencias. No se nombran proveedores ni se le atribuye fabricación propia.
 - **Trato directo por WhatsApp y sin comisión de pasarela:** el pago manual (Yape, Plin o transferencia) es una decisión de negocio, no una carencia.
-- **Piezas hipoalergénicas y minimalistas para el día a día**, solo donde aplica a cada pieza.
+- **Dos materiales:** plata 950 y 925, y acero hipoalergénico con doble enchapado de oro de 18 k (confirmado por el dueño el 13-nov-2026). Cada ficha dice su material exacto y, si hay, el nombre de las piedras; nunca se mezclan ("si es plata, plata; si es acero, acero").
+- **Piezas hipoalergénicas y minimalistas para el día a día**, solo donde aplica a cada pieza. Pendiente: confirmar si el acero con oro de 18 k va bajo "Selección Sandara" o es una línea propia.
 
 ## Operating Context
 
 - Tienda Wix (editor clásico, plan Core) con código Velo propio en `wix/`. El sitio publicado es la autoridad; `index_simulacion.html`, `inicio.html` y demás son simulaciones locales.
 - Pagos manuales: Yape, Plin o transferencia, coordinados por WhatsApp. No recomendar ni agregar pasarelas (Mercado Pago, izipay) por las comisiones.
 - Contacto de pago y WhatsApp: 949 209 933 (mismo número para Yape y WhatsApp).
-- Envíos (Perú): Lima Metropolitana S/ 8 (3–5 días), Nacional S/ 20 (3–7 días), gratis desde S/ 300. Recojo gratis por coordinación directa en Open Plaza Angamos, Surquillo.
+- Envíos (Perú): Lima Metropolitana S/ 8 (3–5 días), Nacional S/ 20 (3–7 días), gratis desde S/ 300. Opción gratuita por defecto: "Entrega (coordinamos por WhatsApp)", con punto en Open Plaza Angamos, Surquillo. Quien quiera envío a domicilio lo elige en el checkout. El carrito no estima envío (se oculta "Tarifas de entrega y envío") para que no preseleccione S/ 8.
 - Contenido de redes: serie de reels "30 días de joyas para todas las ocasiones", con Sandra hablando a cámara.
 
 ## Capabilities and Constraints
 
 - Idioma: español peruano, tuteo.
-- El carrito de Wix preselecciona la opción de envío más barata ("Recogida, gratis") y no se puede dejar sin elegir. Por eso las tarifas se muestran por adelantado en la ficha de producto.
+- El carrito de Wix preselecciona un envío si "Tarifas de entrega y envío" está activo (llegó a mostrar Lima S/ 8). Con ese ajuste apagado, el costo se elige en el checkout; las tarifas se muestran por adelantado en la ficha de producto.
 - Cambiar el slug de un producto desde "Editar los ajustes de SEO" deja el producto en 404; no repetir ese método.
 - Pendiente: textos reales de historia, envíos, pagos, cambios y legales.
 - Pendiente de catálogo: nombre "Dije Trebol" (debería ser "Trébol"), un producto duplicado ("ARETES PUNTO DE LUZ LILA") y una descripción con JSON crudo en "Cadena Inlove".
