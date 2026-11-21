@@ -1,0 +1,5 @@
+Aplica la versión 3 de esta carpeta al borrador de Wix de sandara.pe. Usa index.html como referencia adaptable, escritorio.html para la composición de 1440 px y movil.html para la de 390 px. Reproduce las proporciones, tipografía, colores, espaciado y orden de las secciones. Conserva el video giro.mp4, con el giro lento hacia la izquierda, y el enlace «Explorar las colecciones». En escritorio muestra Atelier y Selección Sandara lado a lado. En móvil conserva el encuadre del video, coloca el enlace debajo del título y apila las colecciones a todo el ancho.
+
+Toda la plata la elabora Sandara. Conserva «Joyería de autor» para el Atelier. Usa «Selección Sandara» para la bisutería y omite el nombre del proveedor. Conecta los enlaces al catálogo real de Wix y conserva productos, inventario, pagos y carrito existentes.
+
+Comprueba la reproducción y los enlaces en ambas vistas. Guarda como borrador, entrega capturas y describe cualquier diferencia pendiente. La publicación queda a cargo de Luis.

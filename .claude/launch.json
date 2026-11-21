@@ -8,6 +8,24 @@
         "scripts/preview.cjs"
       ],
       "port": 8765
+    },
+    {
+      "name": "anise",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8790", "--bind", "127.0.0.1", "--directory", "sim-anise"],
+      "port": 8790
+    },
+    {
+      "name": "anise-v1",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8791", "--bind", "127.0.0.1", "--directory", "sim-anise-v1"],
+      "port": 8791
+    },
+    {
+      "name": "anise-crema",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8792", "--bind", "127.0.0.1", "--directory", "sim-anise-crema"],
+      "port": 8792
     }
   ]
 }

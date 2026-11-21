@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sandara — Joyería de autor</title>
+<link rel="stylesheet" href="styles.css">
+<style>#lineas{padding:clamp(32px,6vw,96px);scroll-margin-top:65px}#lineas h2{text-align:center;margin-bottom:28px}.rutas{display:grid;grid-template-columns:1fr 1fr;gap:14px}.rutas a{display:flex;flex-direction:column;justify-content:end;padding:clamp(18px,4vw,64px);position:relative;isolation:isolate;overflow:hidden;min-height:clamp(210px,33vw,460px);background:#ded1bc;color:#30251d;text-decoration:none}.rutas a:first-child{color:white;background:#28201c}.rutas img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.48);z-index:-1}.rutas strong{font:normal clamp(24px,4vw,54px) Georgia,serif}.rutas span{margin-top:10px;line-height:1.4}.rutas a:focus-visible{outline:3px solid #80654d}body[data-pagina="inicio"] .portada{padding-inline:var(--gutter)}
+.portada .foto:has(video){aspect-ratio:16/9}
+.portada .pie{padding:16px 0 0}
+.rutas{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:860px) {
+  #lineas {padding:40px var(--gutter);}
+  #lineas h2 {text-align:left;margin-bottom:18px;}
+  .rutas {grid-template-columns:1fr;gap:12px;}
+  .rutas a {padding:24px;min-height:clamp(160px,42vw,245px);}
+  .rutas strong {font-size:clamp(30px,7vw,44px);line-height:1.05;}
+  .rutas span {max-width:32ch;font-size:16px;}
+  .portada .pie {display:grid;gap:6px;}
+  .portada .pie .enlace {justify-self:start;display:inline-flex;align-items:center;min-height:44px;}
+  .portada .pie .titulo {font-size:32px;}
+}
+</style></head>
+<body data-pagina="inicio">
+<header class="cabecera" id="cabecera"></header>
+
+<main>
+  <section class="portada">
+    <div class="foto">
+      <video src="giro.mp4" muted loop playsinline poster="img/atelier.jpg" aria-label="Modelo con el dije Azalea en plata 950"></video>
+    </div>
+    <div class="pie">
+      <h1 class="titulo">Sandara</h1>
+      <a class="enlace" href="#lineas">Explorar las colecciones</a>
+    </div>
+  </section>
+
+<section id="lineas"><h2 class="titulo">Las colecciones</h2><div class="rutas"><a href="#atelier"><img src="img/aretes-antonella-2.jpg" alt="Aretes Antonella de plata"><strong>Atelier</strong><span>Joyería de autor en plata 950 y 925, hecha en Sandara.</span></a><a href="#seleccion"><strong>Selección Sandara</strong><span>Bisutería que elegimos por su diseño.</span></a></div></section>  <section class="contenedor dividido" id="atelier">
+    <div class="foto"><img src="img/aretes-antonella-2.jpg" alt="Modelo con los aretes Antonella en plata 950" loading="lazy"></div>
+    <div class="lado">
+      <h2 class="titulo">Atelier</h2>
+      <p class="precio">Plata 950 elaborada en Sandara</p>
+      <div class="pareja" data-productos="dije-azalea,aretes-antonella"></div>
+      <a class="enlace" href="coleccion.html">Comprar Atelier</a>
+    </div>
+  </section>
+
+<section id="seleccion" class="intro banda"><h2 class="titulo">Selección Sandara</h2><p>Dije Corazón Bombita · Dije Estrella · Dije Punto de Luz</p><a class="enlace" href="https://www.sandara.pe/#anchors-ms9mrug93">Ver en la tienda</a></section>  <section class="contenedor franja-foto">
+    <div class="foto"><img src="img/empaque.jpg" alt="Aretes en su empaque Sandara" loading="lazy"></div>
+    <div class="canal banda">
+      <div>
+        <h2 class="titulo">Novedades antes que nadie</h2>
+        <p>Únete al canal de WhatsApp y entérate primero de las piezas nuevas.</p>
+      </div>
+      <a class="boton lleno" href="https://wa.me/51949209933">Unirme al canal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-sitio" id="pie"></footer>
+<script src="productos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

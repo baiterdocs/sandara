@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "sim-portada-animacion/index.html"
+        ],
+        "createdAt": "2026-11-20T22:08:53.610Z",
+        "reason": "Intencional: el eyebrow «Nueva colección» reproduce la portada de referencia que el usuario mostró en su captura; el diseño del usuario lo incluye"
+      }
+    ]
+  }
+}
