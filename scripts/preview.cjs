@@ -10,7 +10,7 @@ const server = http.createServer((req,res) => {
   let name;
   try { name = decodeURIComponent(req.url.split('?')[0]).replace(/^\//,'') || 'inicio.html'; }
   catch { res.writeHead(400); return res.end('URL inválida'); }
-  if (name.includes('\\') || name.includes('\0') || name.split('/').some(s=>s.startsWith('.')) || !(pages.has(name) || name.startsWith('sim/'))) {
+  if (name.includes('\\') || name.includes('\0') || name.split('/').some(s=>s.startsWith('.')) || !(pages.has(name) || /^sim(-intuitivo|-aviso-movil)?\//.test(name))) {
     res.writeHead(404); return res.end('No encontrado');
   }
   const file = path.resolve(root,name);

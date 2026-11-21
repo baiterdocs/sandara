@@ -18,6 +18,10 @@
     /* Aviso superior (comp-mwpi68gn): barra negra a todo el ancho, texto blanco */
     /* Solo escritorio: en móvil el aviso queda como estaba (la cabecera es más baja y la barra se tapaba) */
     '@media(min-width:601px){#comp-mwpi68gn{position:relative}#comp-mwpi68gn::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:' + NEGRO + ';z-index:0}#comp-mwpi68gn *{position:relative;z-index:1;color:#fff!important;letter-spacing:.06em}}',
+    /* Móvil (Wix maqueta a 320 px): el texto ocupaba 2 líneas desde y=58 en una cabecera de 77 px y la portada tapaba la 2.ª («Provincias…»).
+       Barra negra con el texto completo en 2 líneas de 13.5 px, subida 8 px. La portada se monta ~17 px sobre la cabecera,
+       así que la cabecera sube de capa (z-index) para que la 2.ª línea no quede tapada. Probado en sandara.pe móvil el 20-nov-2026. */
+    '@media(max-width:600px){#SITE_HEADER{position:relative;z-index:50}#comp-mwpi68gn{position:relative;transform:translateY(-8px)}#comp-mwpi68gn::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:' + NEGRO + ';z-index:0}#comp-mwpi68gn *{position:relative;z-index:1;color:#fff!important;font-size:10px!important;line-height:13.5px!important;letter-spacing:.04em}}',
 
     /* Portada: «Comprar ahora» (comp-mwogvs3u) como botón negro lleno */
     '#comp-mwogvs3u,#comp-mwogvs3u *{overflow:visible!important}',
