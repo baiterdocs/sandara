@@ -1,0 +1,31 @@
+<!-- Solo escritorio (21-nov-2026): en celular no aplica ningún bloque de código; se ve el diseño del editor móvil de Wix tal cual.
+     Sandara — arreglo de la portada con slideshow (comp-mwq687xx). Wix > Ajustes > Código personalizado > Todas las páginas > Head,
+     cargar DESPUÉS de «Diseño intuitivo — portada completa». Probado en sandara.pe (móvil 320 px y escritorio 1280 px) el 21-nov-2026.
+     Por qué: el slideshow nuevo reemplazó a la portada vieja, pero el CSS de «portada completa» seguía armando la cuadrícula para
+     la portada vieja (video comp-mwogm2m7, título, botón negro). Resultado: en escritorio el slideshow se montaba sobre la portada vieja;
+     en móvil medía 320 px dentro de una columna de 288 px (se salía 16 px por la derecha y cortaba el botón), los textos de la
+     diapositiva quedaban encimados y aparecía un segundo botón «Comprar plata peruana» debajo. -->
+<style id="sdr-portada-slideshow">@media(min-width:601px){/*sdr-solo-escritorio*/
+/* El slideshow es la portada: ocupa todo el ancho y se ocultan las piezas de la portada vieja */
+#comp-ms9uebtn:has(#comp-mwq687xx) :is(#comp-mwogm2m7,#comp-mwpaafbi,#comp-mwd9b83z,#comp-mwpwph3n,#comp-mwogvs3u,.sdr-portada-enlace){display:none!important}
+#comp-ms9uebtn #comp-mwq687xx{grid-area:1/1/-1/-1!important;position:relative!important;inset:auto!important;margin:0!important;width:100%!important;min-width:0!important;justify-self:stretch!important}
+#comp-mwq687xx [data-testid="slidesWrapper"]>div{width:100%!important}
+/* Texto de cada diapositiva: apilado abajo a la izquierda (antes cada pieza tenía posiciones fijas y se encimaban) */
+#comp-mwq687xx [data-mesh-id$="inlineContent"]{height:100%!important}
+#comp-mwq687xx [data-mesh-id$="inlineContent-gridContainer"]{display:flex!important;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:6px;height:100%!important;box-sizing:border-box;padding:0 clamp(20px,5vw,64px) clamp(48px,6vw,80px)}
+#comp-mwq687xx [data-mesh-id$="inlineContent-gridContainer"]>*{position:relative!important;inset:auto!important;margin:0!important;width:auto!important;max-width:100%;min-width:0!important;justify-self:auto!important;align-self:auto!important}
+#comp-mwq687xx [data-mesh-id$="inlineContent-gridContainer"]>:last-child{margin-top:12px!important}
+#comp-mwq687xx :is(#comp-mwq75s9t,#comp-mwq77zg8) :is(p,span){font:600 11px/1.4 var(--sdr-body,"Nunito Sans",system-ui,sans-serif)!important;letter-spacing:.28em!important}
+#comp-mwq687xx :is(#comp-mwq75sa2,#comp-mwq77zgg) :is(h1,h2,p,span){font:400 clamp(24px,3.4vw,44px)/1.15 var(--sdr-display,"Cinzel",Georgia,serif)!important;text-align:left!important}
+#comp-mwq687xx :is(#comp-mwq75saa,#comp-mwq77zgo){width:max-content!important}
+#comp-mwq687xx :is(#comp-mwq75saa,#comp-mwq77zgo) a{width:max-content!important;min-height:44px;padding-inline:20px!important;box-sizing:border-box;white-space:nowrap}
+/* Títulos de colección: Wix les pone un fade-in que arranca en opacidad 0; con las secciones reordenadas a veces no se dispara (iPhone) y el título no aparece */
+#Containergkney :is(#comp-msqq7p3a3,#comp-mwo9a64h,#comp-mwp6vxjr,#comp-mwoangr6,#comp-mwoaokii,#comp-mwp6vxka2,#comp-mwpi8amf,#comp-mwpijlec,#comp-mwpiifhg){animation:none!important;opacity:1!important}
+/* Líneas nuevas de Wix entre título y productos: duplicaban el borde que ya dibuja «portada completa» y en móvil cruzaban el enlace «Ver las … piezas» */
+#Containergkney :is(#comp-mwq52cku,#comp-mwq5v5az,#comp-mwq5e51g){display:none!important}
+/* Móvil: la descripción de cada colección salía a 8 px */
+@media(max-width:600px){
+#Containergkney :is(#comp-mwoangr6,#comp-mwoaokii,#comp-mwp6vxka2) :is(p,span){font-size:13px!important;line-height:1.45!important}
+#Containergkney :is(#comp-mwoangr6,#comp-mwoaokii,#comp-mwp6vxka2){margin-top:4px!important}
+}
+}</style>
