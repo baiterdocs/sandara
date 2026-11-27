@@ -22,7 +22,7 @@ Leer primero, en este orden: `MARCA.md` → `PRODUCT.md` → `DESIGN.md` → est
 |---|---|
 | `whatsapp/respuestas-rapidas.md` | **Nuevo (hoy).** Textos finales de WhatsApp Business: bienvenida, ausencia y 8 respuestas rápidas. |
 | `MARCA.md` | Visión de marca y colores (26-nov). Orden: plata peruana de autor → atelier → acero hipoalergénico. |
-| `wix/custom-code/intuitivo.js` | Cambio: si el CSS ya viene del `<head>` (`intuitivo-head.html`), no lo vuelve a inyectar; la franja de confianza va dentro del footer en un hueco reservado (evita saltos en móvil). |
+| `wix/custom-code/intuitivo.js` | Borrado: lo reemplaza `intuitivo-publicado.html` (ver `wix/custom-code/README.md`). |
 | `wix/custom-code/intuitivo-head.html` | Bloque CSS para el `<head>` que acompaña a `intuitivo.js`. |
 | `wix/custom-code/intuitivo-publicado.html`, `portada-completa-publicado.html`, `portada-slideshow.html` | Copias de los bloques de código personalizado tal como estaban en Wix. **Están APAGADOS en Wix** (ver reglas abajo). |
 | `wix/frontend/pagina-inicio.js` | Código de página (Velo) que calcularía «N piezas · desde S/ X» por colección. Preparado, **sin activar**. |
